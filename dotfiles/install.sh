@@ -10,4 +10,3 @@ stow $ARGS -t $USER_HOME vim
 stow $ARGS -t $USER_HOME Xorg
 
 sudo stow $ARGS -t $ROOT XPS_touchpad
-stow $ARGS -t $USER_HOME XPS_Xorg
