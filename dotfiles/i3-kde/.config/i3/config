@@ -46,8 +46,9 @@ bindsym $mod+Shift+q kill
 
 # A program launcher: rofi
 set $rofi-font-size 28
-bindsym $mod+d exec --no-startup-id rofi -font serif\ $rofi-font-size -show run 
-bindsym $mod+Shift+d exec --no-startup-id rofi -font serif\ $rofi-font-size -show drun 
+set $rofi-width 40
+bindsym $mod+d exec --no-startup-id rofi -width $rofi-width -font "Hack $rofi-font-size" -show run 
+bindsym $mod+Shift+d exec --no-startup-id rofi -width $rofi-width -font "Hack $rofi-font-size" -show drun 
 
 # change focus
 bindsym $mod+j focus left
