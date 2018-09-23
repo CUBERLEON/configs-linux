@@ -45,10 +45,11 @@ bindsym $mod+Shift+Return exec dolphin
 bindsym $mod+Shift+q kill
 
 # A program launcher: rofi
-set $rofi-font-size 28
+set $rofi-font "Hack 28"
 set $rofi-width 40
-bindsym $mod+d exec --no-startup-id rofi -width $rofi-width -font "Hack $rofi-font-size" -show run 
-bindsym $mod+Shift+d exec --no-startup-id rofi -width $rofi-width -font "Hack $rofi-font-size" -show drun 
+bindsym $mod+d exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show run 
+bindsym $mod+Shift+d exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show drun 
+bindsym Mod1+d exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show window
 
 # change focus
 bindsym $mod+j focus left
