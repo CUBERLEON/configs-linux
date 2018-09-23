@@ -1,0 +1,7 @@
+[diff]
+	algorithm = patience
+[merge]
+	tool = p4merge
+[user]
+	name = Liubomyr Piadyk
+	email = liubomyr.piadyk@gmail.com
