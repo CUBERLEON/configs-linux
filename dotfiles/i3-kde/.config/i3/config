@@ -30,7 +30,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 0
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -49,7 +49,7 @@ set $rofi-font "Hack 28"
 set $rofi-width 40
 bindsym $mod+d exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show run 
 bindsym $mod+Shift+d exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show drun 
-bindsym Mod1+d exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show window
+bindsym Mod1+w exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show window
 
 # change focus
 bindsym $mod+j focus left
@@ -204,3 +204,12 @@ for_window [class="krunner"] floating enable, border none
 for_window [class="Kmix"] floating enable, border none
 for_window [class="Klipper"] floating enable, border none
 for_window [class="Plasmoidviewer"] floating enable, border none
+
+## Colors
+# class                 border    backgr.   text      indicator child_border
+client.focused          #4c789920 #28557720 #ffffff   #2e9ef4   #285577
+client.focused_inactive #333333   #5f676a   #ffffff   #484e50   #5f676a
+client.unfocused        #333333   #222222   #888888   #292d2e   #222222
+client.urgent           #2f343a   #900000   #ffffff   #900000   #900000
+client.placeholder      #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
+client.background       #ffffff00
