@@ -2,7 +2,7 @@ USER_HOME=$HOME
 ROOT=/
 ARGS=-R
 
-sudo pacman -S gvim zsh i3-gaps plasma kde-applications rofi
+sudo pacman -S gvim zsh most i3-gaps plasma kde-applications rofi
 
 stow $ARGS -t $USER_HOME git
 stow $ARGS -t $USER_HOME i3-kde
