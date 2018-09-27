@@ -4,13 +4,10 @@ PACMAN_ARGS=--needed
 sudo pacman -S $PACMAN_ARGS base-devel git wget yajl
 sudo pacman -S $PACMAN_ARGS gvim zsh most
 
-# yaourt
+#yay
 cd /tmp
-git clone https://aur.archlinux.org/package-query.git
-cd package-query/
-makepkg $PACMAN_ARGS -si && cd /tmp/
-git clone https://aur.archlinux.org/yaourt.git
-cd yaourt/
+git clone https://aur.archlinux.org/yay.git
+cd yay
 makepkg $PACMAN_ARGS -si
 
 # desktop environment
