@@ -41,6 +41,7 @@ then
     stow $STOW_ARGS -t $USER_HOME shell
     stow $STOW_ARGS -t $USER_HOME vim
     stow $STOW_ARGS -t $USER_HOME Xorg
+    sudo stow $STOW_ARGS -t $ROOT pacman
 fi
 
 if [ $XPS -eq 1 ]
