@@ -1,1 +1,1 @@
-redshift -P -O 4200 &
+redshift -P -O 4000 &
