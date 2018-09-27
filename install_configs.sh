@@ -42,6 +42,7 @@ then
     stow $STOW_ARGS -t $USER_HOME vim
     stow $STOW_ARGS -t $USER_HOME Xorg
     sudo stow $STOW_ARGS -t $ROOT pacman
+    stow $STOW_ARGS -t $USER_HOME makepkg
 fi
 
 if [ $XPS -eq 1 ]
