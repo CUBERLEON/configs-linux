@@ -65,6 +65,7 @@ ZSH_THEME="robbyrussell"
 plugins=(
   git
   colored-man-pages
+  web-search
 )
 
 source $ZSH/oh-my-zsh.sh
