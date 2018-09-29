@@ -1,6 +1,6 @@
 [Appearance]
 ColorScheme=Linux
-Font=Hack,10,-1,5,50,0,0,0,0,0,Regular
+Font=Hack,11,-1,5,50,0,0,0,0,0,Regular
 
 [Cursor Options]
 CursorShape=0
