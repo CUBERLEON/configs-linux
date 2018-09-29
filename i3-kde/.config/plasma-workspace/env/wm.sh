@@ -2,4 +2,4 @@
 export KDEWM=/usr/bin/i3
 
 # Start compton as daemon (-b)
-compton -b
+compton -b --config .config/compton/compton.conf
