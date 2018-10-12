@@ -30,7 +30,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 0
+font pango:DejaVu Sans Mono 8
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -58,7 +58,7 @@ bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # Alt+Tab hotkey
-bindsym Mod1+Tab focus right
+bindsym Mod1+Tab exec --no-startup-id i3-cycle right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
