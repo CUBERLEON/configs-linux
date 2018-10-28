@@ -2,7 +2,7 @@ ARGS="-S --needed --noconfirm"
 
 # base
 sudo pacman $ARGS base-devel git wget gvim ntfs-3g most
-sudo pacman $ARGS yajl stow python-pip rsync htop
+sudo pacman $ARGS yajl stow python-pip rsync htop ranger
 
 # yay
 cd /tmp
@@ -15,13 +15,17 @@ yay $ARGS zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # desktop environment
-yay $ARGS xorg-xinit i3-gaps plasma kdebase
+yay $ARGS xorg-xinit xorg-xrandr i3-gaps plasma kdebase
 sudo mv /usr/bin/ksplashqml /usr/bin/ksplashqml.old
-yay $ARGS redshift rofi compton ttf-ms-fonts feh
+yay $ARGS redshift rofi compton ttf-ms-fonts feh gnome-themes-standard
+yay $ARGS maim xclip
 sudo pip install i3-cycle
 
 # extra
-yay $ARGS neofetch gparted
-yay $ARGS code jetbrains-toolbox
-yay $ARGS google-chrome telegram-desktop dropbox tixati mpv
+yay $ARGS neofetch gparted protonvpn-cli
+yay $ARGS google-chrome telegram-desktop dropbox tixati calibre mpv spotify-adkiller-dns-block-git
 yay $ARGS safeeyes xprintidle
+
+# dev
+yay $ARGS code jetbrains-toolbox
+yay $ARGS miniconda3

@@ -41,6 +41,10 @@ bindsym $mod+Return exec konsole
 # start a file manager
 bindsym $mod+Shift+Return exec dolphin 
 
+# take screenshot
+bindsym Print exec maim | xclip -selection clipboard -t image/png
+bindsym $mod+Print exec maim -s | xclip -selection clipboard -t image/png
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -187,7 +191,7 @@ bindsym $mod+r mode "resize"
 # }
 
 # Starting things with i3
-exec_always --no-startup-id feh --bg-scale ~/Pictures/bg.jpg
+exec_always --no-startup-id feh --bg-scale ~/images/wallp/_bg.jpg
 
 ## Plasma integration
 # Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
