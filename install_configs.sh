@@ -43,6 +43,8 @@ then
     stow $STOW_ARGS -t $USER_HOME Xorg
     sudo stow $STOW_ARGS -t $ROOT pacman
     stow $STOW_ARGS -t $USER_HOME makepkg
+    mkdir $USER_HOME/scripts
+    stow $STOW_ARGS -t $USER_HOME/scripts scripts
 fi
 
 if [ $XPS -eq 1 ]

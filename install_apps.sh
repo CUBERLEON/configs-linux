@@ -27,5 +27,6 @@ yay $ARGS google-chrome telegram-desktop dropbox tixati calibre mpv spotify-adki
 yay $ARGS safeeyes xprintidle
 
 # dev
+yay cmake
 yay $ARGS code jetbrains-toolbox
 yay $ARGS miniconda3

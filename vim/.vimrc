@@ -1,3 +1,4 @@
+syntax on                           " Enable syntax highlighting
 set number                     	    " Show line numbers
 set linebreak                  	    " Break lines at word (requires Wrap lines)
 set showmatch                  	    " Highlight matching brace
