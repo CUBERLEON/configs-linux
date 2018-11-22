@@ -1,4 +1,6 @@
+sudo rmmod nvidia_drm
 sudo rmmod nvidia_uvm
 sudo rmmod nvidia_modeset
 sudo rmmod nvidia
-sudo tee /proc/acpi/bbswitch <<< OFF
+sudo tee /proc/acpi/bbswitch <<< OFF >> /dev/null
+nvidia-status

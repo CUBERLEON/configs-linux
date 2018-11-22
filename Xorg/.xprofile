@@ -1,1 +1,2 @@
-redshift -P -O 4000
+export ANDROID_HOME=/home/liu/Android/Sdk/
+export ANDROID_SDK_ROOT=$ANDROID_HOME
