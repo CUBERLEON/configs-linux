@@ -27,6 +27,7 @@ set $transparent #00000000
 
 # Windows button
 set $mod Mod4
+set $alt Mod1
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -36,24 +37,25 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec --no-startup-id konsole
 
 # start a file manager
-bindsym $mod+Shift+Return exec dolphin 
+bindsym $mod+Shift+Return exec --no-startup-id dolphin 
 
 # take screenshot
-bindsym Print exec maim | xclip -selection clipboard -t image/png
-bindsym $mod+Print exec maim -s | xclip -selection clipboard -t image/png
+bindsym Print exec --no-startup-id scrot ~/screenshots/%Y-%m-%d-%T.png -e 'xclip -selection c -t image/png < $f'
+bindsym --release Shift+Print exec --no-startup-id scrot -s ~/screenshots/%Y-%m-%d-%T.png -e 'xclip -selection c -t image/png < $f'
 
 # kill focused window
 bindsym $mod+Shift+q kill
+bindsym $alt+F4 kill
 
 # A program launcher: rofi
 set $rofi-font "Hack 28"
 set $rofi-width 40
 bindsym $mod+d exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show run 
 bindsym $mod+Shift+d exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show drun 
-bindsym Mod1+w exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show window
+bindsym $alt+w exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show window
 
 # change focus
 bindsym $mod+j focus left
@@ -62,7 +64,7 @@ bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # Alt+Tab hotkey
-bindsym Mod1+Tab exec --no-startup-id i3-cycle right
+bindsym $alt+Tab exec --no-startup-id i3-cycle right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -222,4 +224,10 @@ client.background       #ffffff00
 exec --no-startup-id compton &
 
 # display temp
-exec --no-startup-id redshift -P -O 4000 &
+exec_always --no-startup-id redshift -P -O 4300 &
+
+# touchpad
+exec_always --no-startup-id xinput set-prop "DLL07BE:01 06CB:7A13 Touchpad" "libinput Disable While Typing Enabled" 0
+
+# reset laptop's display resolution
+exec_always --no-startup-id xrandr --output eDP-1 --auto

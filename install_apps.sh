@@ -18,7 +18,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 yay $ARGS xorg-xinit xorg-xrandr i3-gaps plasma kdebase
 sudo mv /usr/bin/ksplashqml /usr/bin/ksplashqml.old
 yay $ARGS redshift rofi compton ttf-ms-fonts feh gnome-themes-standard
-yay $ARGS maim xclip
+yay $ARGS scrot xclip
 sudo pip install i3-cycle
 
 # extra
