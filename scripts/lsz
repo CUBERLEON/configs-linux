@@ -1,0 +1,1 @@
+du $1 -h --max-depth=1 | sort -h

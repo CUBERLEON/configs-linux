@@ -23,10 +23,12 @@ sudo pip install i3-cycle
 
 # extra
 yay $ARGS neofetch ranger-git gparted protonvpn-cli
-yay $ARGS google-chrome telegram-desktop dropbox tixati calibre mpv spotify-adkiller-dns-block-git
+yay $ARGS chromium telegram-desktop dropbox tixati calibre mpv spotify-adkiller-dns-block-git
 yay $ARGS safeeyes xprintidle
 
 # dev
 yay $ARGS cmake
 yay $ARGS code jetbrains-toolbox
 yay $ARGS miniconda3
+yay $ARGS python python-pip python2 python2-pip
+yay $ARGS cmake ccache

@@ -104,3 +104,9 @@ if [ -f ~/.env_vars ]; then
     . ~/.env_vars
 fi
 
+setfont latarcyrheb-sun32 &>> /dev/null
+
+#disable auto correct
+unsetopt correct_all
+
+conda activate py36
