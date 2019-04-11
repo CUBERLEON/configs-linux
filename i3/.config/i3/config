@@ -254,3 +254,6 @@ exec_always --no-startup-id pgrep "temp-throttle" || sudo temp-throttle 70 &
 # desktop dimmer - dim your display below minimal value
 #exec_always --no-startup-id pgrep "desktop-dimmer" || desktop-dimmer &
 exec_always --no-startup-id killall desktop-dimmer
+
+# save windows info to a file
+bindsym $mod+Shift+w exec --no-startup-id windows-info > ~/windows-info.txt

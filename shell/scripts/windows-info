@@ -1,0 +1,4 @@
+for i in `xlsclients -l | grep "^ *Name" | awk '{print $2}'`; do
+    printf "\n%s\n" $i
+    xprop -name "$i"
+done
