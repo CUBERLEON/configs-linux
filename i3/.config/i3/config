@@ -57,7 +57,7 @@ bindsym --release button2 kill
 set $rofi-font "Hack 28"
 set $rofi-width 40
 bindsym $mod+d exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show run 
-bindcode --release 133 exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show drun
+bindsym $mod+Shift+d exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show drun
 bindsym $alt+w exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show window
 
 # change focus
@@ -109,6 +109,10 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+
+# workspace left/right switching
+bindsym $alt+Ctrl+Left workspace prev
+bindsym $alt+Ctrl+Right workspace next 
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -225,7 +229,7 @@ client.placeholder      #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
 client.background       #ffffff00
 
 # display temp
-exec_always --no-startup-id redshift -P -O 5000 &
+exec_always --no-startup-id redshift -P -O 3600 &
 
 # apps tracking
 exec --no-startup-id rescuetime &
@@ -242,3 +246,9 @@ exec_always --no-startup-id killall compton; compton --vsync opengl-swc -b
 
 # mount Google Drive storage
 exec_always --no-startup-id google-drive-ocamlfuse ~/.sync/Drive &
+
+# cpu freq throttling to limit temperature
+exec_always --no-startup-id pgrep "temp-throttle" || sudo temp-throttle 70 &
+
+# desktop dimmer - dim your display below minimal value
+exec_always --no-startup-id pgrep "desktop-dimmer" || desktop-dimmer &

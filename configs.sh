@@ -36,20 +36,23 @@ if [ $BASE -eq 1 ]
 then
     echo "Installing Base configs..."
     stow $STOW_ARGS -t $USER_HOME git
-    stow $STOW_ARGS -t $USER_HOME i3-kde
-    stow $STOW_ARGS -t $USER_HOME konsole
     stow $STOW_ARGS -t $USER_HOME shell
     stow $STOW_ARGS -t $USER_HOME vim
     stow $STOW_ARGS -t $USER_HOME Xorg
-    sudo stow $STOW_ARGS -t $ROOT pacman
+    
     stow $STOW_ARGS -t $USER_HOME makepkg
-    mkdir $USER_HOME/scripts
-    stow $STOW_ARGS -t $USER_HOME/scripts scripts
+    sudo stow $STOW_ARGS -t $ROOT pacman
+    
+    stow $STOW_ARGS -t $USER_HOME i3
+    
+    stow $STOW_ARGS -t $USER_HOME kde
+    stow $STOW_ARGS -t $USER_HOME konsole
 fi
 
 if [ $XPS -eq 1 ]
 then
     echo "Installing XPS configs..."
-    sudo stow $STOW_ARGS -t $ROOT XPS_touchpad
-    stow $STOW_ARGS -t $USER_HOME XPS_Xorg
+    sudo stow $STOW_ARGS -t $ROOT xps_touchpad
+    stow $STOW_ARGS -t $USER_HOME xps_Xorg
+    stow $STOW_ARGS -t $USER_HOME xps_gestures
 fi
