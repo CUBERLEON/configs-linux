@@ -17,14 +17,15 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 # desktop environment
 yay $ARGS xorg-xinit xorg-xrandr i3-gaps plasma kdebase
 sudo mv /usr/bin/ksplashqml /usr/bin/ksplashqml.old
-yay $ARGS redshift rofi compton ttf-ms-fonts feh gnome-themes-standard
+yay $ARGS redshift rofi ttf-ms-fonts feh gnome-themes-standard
 yay $ARGS scrot xclip
+yay $ARGS libiconv compton-tryone-git
 sudo pip install i3-cycle
 
 # extra
 yay $ARGS neofetch ranger-git gparted protonvpn-cli
 yay $ARGS chromium telegram-desktop dropbox tixati calibre mpv spotify-adkiller-dns-block-git
-yay $ARGS safeeyes xprintidle
+yay $ARGS safeeyes xprintidle desktop-dimmer
 
 # dev
 yay $ARGS cmake

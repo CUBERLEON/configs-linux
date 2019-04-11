@@ -242,7 +242,8 @@ exec_always --no-startup-id xrandr --output eDP-1 --auto
 exec_always --no-startup-id xrandr --output eDP-1-1 --auto
 
 # compton (transparency, vsync)
-exec_always --no-startup-id killall compton; compton --vsync opengl-swc -b
+#exec_always --no-startup-id killall compton; compton --vsync opengl-swc -b
+exec_always --no-startup-id killall compton; compton -b
 
 # mount Google Drive storage
 exec_always --no-startup-id google-drive-ocamlfuse ~/.sync/Drive &
@@ -251,4 +252,5 @@ exec_always --no-startup-id google-drive-ocamlfuse ~/.sync/Drive &
 exec_always --no-startup-id pgrep "temp-throttle" || sudo temp-throttle 70 &
 
 # desktop dimmer - dim your display below minimal value
-exec_always --no-startup-id pgrep "desktop-dimmer" || desktop-dimmer &
+#exec_always --no-startup-id pgrep "desktop-dimmer" || desktop-dimmer &
+exec_always --no-startup-id killall desktop-dimmer

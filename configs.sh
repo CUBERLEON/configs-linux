@@ -44,6 +44,7 @@ then
     sudo stow $STOW_ARGS -t $ROOT pacman
     
     stow $STOW_ARGS -t $USER_HOME i3
+    stow $STOW_ARGS -t $USER_HOME compton
     
     stow $STOW_ARGS -t $USER_HOME kde
     stow $STOW_ARGS -t $USER_HOME konsole
