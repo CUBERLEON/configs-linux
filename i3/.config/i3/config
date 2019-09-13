@@ -219,6 +219,9 @@ bar {
 # Starting things with i3
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallp/_bg.jpg
 
+# Lock screen
+bindsym $alt+Ctrl+l exec i3lock -t -i ~/Pictures/wallp/_bg_lock.png
+
 ## Plasma integration
 # Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
 exec --no-startup-id wmctrl -c Plasma
