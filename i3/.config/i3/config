@@ -247,6 +247,10 @@ client.urgent           #2f343a   #900000   #ffffff   #900000   #900000
 client.placeholder      #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
 client.background       #ffffff00
 
+# Layout switching shortcut
+exec_always setxkbmap -layout us,ua
+exec_always setxkbmap -option 'grp:alt_shift_toggle'
+
 # run compton
 exec_always --no-startup-id killall compton; compton -b --vsync opengl-swc
 
@@ -255,9 +259,6 @@ exec_always --no-startup-id redshift -O 4600 &
 
 # touchpad
 exec_always --no-startup-id xinput set-prop "DLL07BE:01 06CB:7A13 Touchpad" "libinput Disable While Typing Enabled" 0
-
-# reset laptop's display resolution
-exec_always --no-startup-id . ~/.xprofile 
 
 # other apps
 exec --no-startup-id telegram-desktop -startintray &
