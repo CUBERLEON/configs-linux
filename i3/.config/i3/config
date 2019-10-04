@@ -136,17 +136,6 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-workspace $ws1 output primary
-workspace $ws2 output primary
-workspace $ws3 output primary
-workspace $ws4 output primary
-workspace $ws5 output primary
-workspace $ws6 output primary
-workspace $ws7 output primary
-workspace $ws8 output primary
-workspace $ws9 output primary
-workspace $ws10 output secondary
-
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -266,3 +255,9 @@ exec --no-startup-id workrave &
 
 # time tracking
 exec_always --no-startup-id killall rescuetime; rescuetime &
+
+# 2 displays
+#exec_always --no-startup-id xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+#exec_always --no-startup-id xrandr --addmode VGA1 1920x1080_60.00
+#exec_always --no-startup-id xrandr --output VIRTUAL1 --off --output DP1 --off
+#exec_always --no-startup-id xrandr --output HDMI1 --primary --left-of VGA1 --mode 1920x1080_60.00
