@@ -249,7 +249,8 @@ exec_always --no-startup-id killall compton; compton -b --vsync opengl-swc
 exec_always --no-startup-id redshift -O 4600 &
 
 # touchpad
-exec_always --no-startup-id xinput set-prop "DLL07BE:01 06CB:7A13 Touchpad" "libinput Disable While Typing Enabled" 0
+# DELL XPS 15
+#exec_always --no-startup-id xinput set-prop "DLL07BE:01 06CB:7A13 Touchpad" "libinput Disable While Typing Enabled" 0
 
 # other apps
 exec --no-startup-id telegram-desktop -startintray &
