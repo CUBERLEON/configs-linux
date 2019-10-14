@@ -1,2 +1,2 @@
-sudo tee /proc/acpi/bbswitch <<< ON
-sudo modprobe nvidia_drm
+tee /proc/acpi/bbswitch <<< ON
+modprobe nvidia_drm

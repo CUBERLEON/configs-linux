@@ -1,0 +1,14 @@
+OFF='OFF'
+if [[ $(nvidia-status) = *OFF* ]];
+then
+    tee /proc/acpi/bbswitch <<< ON
+    modprobe nvidia_drm
+else
+    rmmod nvidia_drm
+    rmmod nvidia_uvm
+    rmmod nvidia_modeset
+    rmmod nvidia
+    tee /proc/acpi/bbswitch <<< OFF >> /dev/null
+    nvidia-status
+fi
+

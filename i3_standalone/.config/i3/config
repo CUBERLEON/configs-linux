@@ -243,7 +243,7 @@ exec_always setxkbmap -layout us,ua
 exec_always setxkbmap -option 'grp:alt_shift_toggle'
 
 # run compton
-exec_always --no-startup-id killall compton; compton -b --vsync opengl-swc
+exec_always --no-startup-id killall compton; compton -b --config ~/.config/compton.conf
 
 # display temp
 exec_always --no-startup-id redshift -O 4600 &

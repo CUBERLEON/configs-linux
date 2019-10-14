@@ -3,13 +3,13 @@ ROOT=/
 STOW_ARGS=-R
 
 # by default do nothing
-BASE=0
+I3KDE=0
 XPS=0
 
 # no arguments
 if [ $# -eq 0 ]
 then
-    echo "No arguments supplied. Supported: base xps"
+    echo "No arguments supplied. Supported: i3_kde xps"
     exit 0
 fi
 
@@ -20,7 +20,7 @@ do
         --*)    echo "bad option $1"
                 exit 1
                 ;;
-        base)   BASE=1
+        i3_kde) I3KDE=1
                 ;;
         xps)    XPS=1
                 ;;
@@ -31,28 +31,28 @@ do
     shift
 done
 
-# install base
-if [ $BASE -eq 1 ]
+echo "Installing Base configs..."
+stow $STOW_ARGS -t $USER_HOME git
+stow $STOW_ARGS -t $USER_HOME shell
+stow $STOW_ARGS -t $USER_HOME vim
+stow $STOW_ARGS -t $USER_HOME makepkg
+sudo stow $STOW_ARGS -t $ROOT pacman
+stow $STOW_ARGS -t $USER_HOME Xorg
+
+# install i3-kde
+if [ $I3KDE -eq 1 ]
 then
-    echo "Installing Base configs..."
-    stow $STOW_ARGS -t $USER_HOME git
-    stow $STOW_ARGS -t $USER_HOME shell
-    stow $STOW_ARGS -t $USER_HOME vim
-    stow $STOW_ARGS -t $USER_HOME Xorg
-    
-    stow $STOW_ARGS -t $USER_HOME makepkg
-    sudo stow $STOW_ARGS -t $ROOT pacman
-    
-    stow $STOW_ARGS -t $USER_HOME i3
-    stow $STOW_ARGS -t $USER_HOME compton
-    
-    stow $STOW_ARGS -t $USER_HOME kde
+    echo "Installing i3+kde configs..."
+
+    stow $STOW_ARGS -t $USER_HOME i3_kde
+    stow $STOW_ARGS -t $USER_HOME compton_kawase
     stow $STOW_ARGS -t $USER_HOME konsole
 fi
 
 if [ $XPS -eq 1 ]
 then
     echo "Installing XPS configs..."
+
     sudo stow $STOW_ARGS -t $ROOT xps_touchpad
     stow $STOW_ARGS -t $USER_HOME xps_Xorg
     stow $STOW_ARGS -t $USER_HOME xps_gestures

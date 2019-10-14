@@ -1,2 +1,2 @@
-A=`sudo rdmsr 0x1FC`
-sudo wrmsr -a 0x1FC `printf '%x\n' $((0x$A & 0xFFFFFFFE))`
+A=`rdmsr 0x1FC`
+wrmsr -a 0x1FC `printf '%x\n' $((0x$A & 0xFFFFFFFE))`

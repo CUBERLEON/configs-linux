@@ -15,7 +15,7 @@ yay $ARGS zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # desktop environment
-yay $ARGS xorg-xinit xorg-xrandr i3-gaps plasma kdebase
+yay $ARGS xorg-xinit xorg-xrandr i3-gaps i3blocks i3lock i3status plasma kdebase
 sudo mv /usr/bin/ksplashqml /usr/bin/ksplashqml.old
 yay $ARGS redshift rofi ttf-ms-fonts feh gnome-themes-standard
 yay $ARGS scrot xclip

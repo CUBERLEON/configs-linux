@@ -1,10 +1,8 @@
-# No title nars
-for_window [class="^.*"] border pixel 0
-
 # Gaps
-gaps inner 5 
+gaps inner 6 
 gaps outer 0
 smart_gaps on
+#smart_gaps off
 
 set $black       #212121
 set $darkblack   #000000
@@ -29,6 +27,9 @@ set $transparent #00000000
 set $mod Mod4
 set $alt Mod1
 
+# No title bars
+for_window [class=".*" tiling] border pixel 0
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:DejaVu Sans Mono 8
@@ -43,8 +44,8 @@ bindsym $mod+Return exec --no-startup-id konsole
 bindsym $mod+Shift+Return exec --no-startup-id dolphin 
 
 # take screenshot
-bindsym Print exec --no-startup-id scrot ~/media/images/screenshots/%Y-%m-%d-%T.png -e 'xclip -selection c -t image/png < $f'
-bindsym --release Shift+Print exec --no-startup-id scrot -s ~/media/images/screenshots/%Y-%m-%d-%T.png -e 'xclip -selection c -t image/png < $f'
+bindsym Print exec --no-startup-id scrot ~/images/screenshots/%Y-%m-%d-%T.png -e 'xclip -selection c -t image/png < $f'
+bindsym --release Shift+Print exec --no-startup-id scrot -d 1 -s ~/images/screenshots/%Y-%m-%d-%T.png -e 'xclip -selection c -t image/png < $f'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -193,14 +194,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-#         status_command i3status
-# }
-
-# Starting things with i3
-exec_always --no-startup-id feh --bg-scale ~/media/images/wallp/_bg.jpg
+# background
+exec_always --no-startup-id feh --bg-fill ~/images/wallp/_bg.jpg
 
 ## Plasma integration
 # Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
@@ -221,15 +216,17 @@ for_window [window_role="GtkFileChooserDialog"] resize set 1600 900
 
 ## Colors
 # class                 border    backgr.   text      indicator child_border
-client.focused          #4c789920 #28557720 #ffffff   #2e9ef4   #285577
+client.focused          #4c7899   #285577   #ffffff   #2e9ef4   #285577
 client.focused_inactive #333333   #5f676a   #ffffff   #484e50   #5f676a
 client.unfocused        #333333   #222222   #888888   #292d2e   #222222
 client.urgent           #2f343a   #900000   #ffffff   #900000   #900000
 client.placeholder      #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
-client.background       #ffffff00
+client.background       #ffffff
 
 # display temp
-exec_always --no-startup-id redshift -P -O 3600 &
+exec_always --no-startup-id redshift -P -O 3000 &
+#bindsym $mod+Shift+b exec --no-startup-id redshift -P -O 3600 -b 0.5 &
+bindsym $mod+Shift+b exec --no-startup-id redshift -P -O 4600 &
 
 # apps tracking
 exec --no-startup-id rescuetime &
@@ -238,22 +235,22 @@ exec --no-startup-id rescuetime &
 exec_always --no-startup-id xinput set-prop "DLL07BE:01 06CB:7A13 Touchpad" "libinput Disable While Typing Enabled" 0
 
 # reset laptop's display resolution
-exec_always --no-startup-id xrandr --output eDP-1 --auto
-exec_always --no-startup-id xrandr --output eDP-1-1 --auto
+exec_always --no-startup-id killall compton
+exec_always --no-startup-id xrandr --output eDP-1 --auto --scale 1x1
+exec_always --no-startup-id xrandr --output eDP-1-1 --auto --scale 1x1
 
 # compton (transparency, vsync)
-#exec_always --no-startup-id killall compton; compton --vsync opengl-swc -b
-exec_always --no-startup-id killall compton; compton -b
+exec_always --no-startup-id killall compton; compton -b --config ~/.config/compton.conf
 
 # mount Google Drive storage
-exec_always --no-startup-id google-drive-ocamlfuse ~/.sync/Drive &
+#exec_always --no-startup-id google-drive-ocamlfuse ~/.sync/Drive &
 
 # cpu freq throttling to limit temperature
 exec_always --no-startup-id pgrep "temp-throttle" || sudo temp-throttle 70 &
 
-# desktop dimmer - dim your display below minimal value
-#exec_always --no-startup-id pgrep "desktop-dimmer" || desktop-dimmer &
-exec_always --no-startup-id killall desktop-dimmer
-
 # save windows info to a file
 bindsym $mod+Shift+w exec --no-startup-id windows-info > ~/windows-info.txt
+
+# nvidia on/off
+bindsym $mod+Shift+n exec --no-startup-id sudo nvidia-toggle 
+

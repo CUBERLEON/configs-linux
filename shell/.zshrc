@@ -109,4 +109,5 @@ setfont latarcyrheb-sun32 &>> /dev/null
 #disable auto correct
 unsetopt correct_all
 
-conda activate py36
+conda activate py37
+#conda deactivate

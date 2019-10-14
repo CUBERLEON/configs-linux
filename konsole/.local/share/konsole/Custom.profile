@@ -4,6 +4,7 @@ Font=Hack,11,-1,5,50,0,0,0,0,0,Regular
 
 [Cursor Options]
 CursorShape=0
+UseCustomCursorColor=false
 
 [General]
 Name=Custom
