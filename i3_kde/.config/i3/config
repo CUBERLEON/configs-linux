@@ -1,8 +1,10 @@
+# No title bars
+for_window [class=".*" tiling] border pixel 0
+
 # Gaps
 gaps inner 6 
 gaps outer 0
 smart_gaps on
-#smart_gaps off
 
 set $black       #212121
 set $darkblack   #000000
@@ -27,15 +29,16 @@ set $transparent #00000000
 set $mod Mod4
 set $alt Mod1
 
-# No title bars
-for_window [class=".*" tiling] border pixel 0
-
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:DejaVu Sans Mono 8
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# By default, when switching focus to a window on a different output (e.g. focusing a window on workspace 3 on output VGA-1, coming from workspace 2 on LVDS-1), the mouse cursor is warped to the center of that window.
+# With the mouse_warping option, you can control when the mouse cursor should be warped. none disables warping entirely, whereas output is the default behavior described above.
+mouse_warping none
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id konsole
@@ -212,7 +215,6 @@ for_window [class="krunner"] floating enable, border none
 for_window [class="Kmix"] floating enable, border none
 for_window [class="Klipper"] floating enable, border none
 for_window [class="Plasmoidviewer"] floating enable, border none
-for_window [window_role="GtkFileChooserDialog"] resize set 1600 900
 
 ## Colors
 # class                 border    backgr.   text      indicator child_border
@@ -223,34 +225,35 @@ client.urgent           #2f343a   #900000   #ffffff   #900000   #900000
 client.placeholder      #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
 client.background       #ffffff
 
+# DELL XPS 15
+# touchpad
+exec_always --no-startup-id xinput set-prop "DLL07BE:01 06CB:7A13 Touchpad" "libinput Disable While Typing Enabled" 0
+# reset laptop's display resolution
+exec_always --no-startup-id killall compton
+exec_always --no-startup-id xrandr --output eDP-1 --auto --scale 1x1
+exec_always --no-startup-id xrandr --output eDP-1-1 --auto --scale 1x1
+for_window [window_role="GtkFileChooserDialog"] resize set 1600 900
+# cpu freq throttling to limit temperature
+exec_always --no-startup-id pgrep "temp-throttle" || sudo temp-throttle 70 &
+
+# compton (transparency, vsync)
+exec_always --no-startup-id killall compton; compton -b --config ~/.config/compton.conf
+
 # display temp
 exec_always --no-startup-id redshift -P -O 3000 &
 #bindsym $mod+Shift+b exec --no-startup-id redshift -P -O 3600 -b 0.5 &
 bindsym $mod+Shift+b exec --no-startup-id redshift -P -O 4600 &
 
-# apps tracking
-exec --no-startup-id rescuetime &
-
-# touchpad
-exec_always --no-startup-id xinput set-prop "DLL07BE:01 06CB:7A13 Touchpad" "libinput Disable While Typing Enabled" 0
-
-# reset laptop's display resolution
-exec_always --no-startup-id killall compton
-exec_always --no-startup-id xrandr --output eDP-1 --auto --scale 1x1
-exec_always --no-startup-id xrandr --output eDP-1-1 --auto --scale 1x1
-
-# compton (transparency, vsync)
-exec_always --no-startup-id killall compton; compton -b --config ~/.config/compton.conf
-
 # mount Google Drive storage
 #exec_always --no-startup-id google-drive-ocamlfuse ~/.sync/Drive &
-
-# cpu freq throttling to limit temperature
-exec_always --no-startup-id pgrep "temp-throttle" || sudo temp-throttle 70 &
 
 # save windows info to a file
 bindsym $mod+Shift+w exec --no-startup-id windows-info > ~/windows-info.txt
 
 # nvidia on/off
 bindsym $mod+Shift+n exec --no-startup-id sudo nvidia-toggle 
+
+# other apps
+exec --no-startup-id workrave &
+exec --no-startup-id rescuetime &
 

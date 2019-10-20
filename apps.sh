@@ -16,6 +16,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 # desktop environment
 yay $ARGS xorg-xinit xorg-xrandr i3-gaps i3blocks i3lock i3status plasma kdebase
+yay $ARGS libva-intel-driver 
 sudo mv /usr/bin/ksplashqml /usr/bin/ksplashqml.old
 yay $ARGS redshift rofi ttf-ms-fonts feh gnome-themes-standard
 yay $ARGS scrot xclip
@@ -24,12 +25,12 @@ sudo pip install i3-cycle
 
 # extra
 yay $ARGS neofetch ranger-git gparted protonvpn-cli
-yay $ARGS chromium telegram-desktop dropbox tixati calibre mpv spotify-adkiller-dns-block-git
-yay $ARGS safeeyes xprintidle desktop-dimmer
+yay $ARGS chromium-vaapi-bin telegram-desktop dropbox tixati calibre mpv spotify-adkiller-dns-block-git
+yay $ARGS safeeyes xprintidle
 
 # dev
 yay $ARGS cmake
 yay $ARGS code jetbrains-toolbox
 yay $ARGS miniconda3
 yay $ARGS python python-pip python2 python2-pip
-yay $ARGS cmake ccache
+yay $ARGS cmake ccache ninja

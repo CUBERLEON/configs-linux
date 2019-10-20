@@ -4,4 +4,4 @@
 
 xrdb -merge ~/.Xresources
 
-exec startkde
+exec startplasma-x11

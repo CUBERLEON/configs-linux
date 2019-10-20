@@ -1,12 +1,12 @@
-# No title nars
+# No title bars
 #for_window [class="^.*"] border pixel 0
 default_border none
 default_floating_border normal
 
 # Gaps
-gaps inner 4 
-gaps outer 3
-#smart_gaps on
+gaps inner 6 
+gaps outer 0
+smart_gaps on
 
 set $black       #212121
 set $darkblack   #000000
@@ -49,8 +49,8 @@ bindsym $mod+Return exec --no-startup-id konsole
 bindsym $mod+Shift+Return exec --no-startup-id dolphin 
 
 # take screenshot
-bindsym Print exec --no-startup-id scrot ~/Pictures/screenshots/%Y-%m-%d_%H-%M-%S.png -e 'xclip -selection c -t image/png < $f'
-bindsym --release Shift+Print exec --no-startup-id scrot -s -d 1 ~/Pictures/screenshots/%Y-%m-%d_%H-%M-%S.png -e 'xclip -selection c -t image/png < $f'
+bindsym Print exec --no-startup-id scrot ~/images/screenshots/%Y-%m-%d-%T.png -e 'xclip -selection c -t image/png < $f'
+bindsym --release Shift+Print exec --no-startup-id scrot -d 1 -s ~/images/screenshots/%Y-%m-%d-%T.png -e 'xclip -selection c -t image/png < $f'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -60,7 +60,7 @@ bindsym $alt+F4 kill
 bindsym --release button2 kill
 
 # A program launcher: rofi
-set $rofi-font "Hack 14"
+set $rofi-font "Hack 28"
 set $rofi-width 40
 bindsym $mod+d exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show run 
 bindsym $mod+Shift+d exec --no-startup-id rofi -width $rofi-width -font $rofi-font -show drun
@@ -205,11 +205,11 @@ bar {
         status_command i3status
 }
 
-# Starting things with i3
-exec_always --no-startup-id feh --bg-scale ~/Pictures/wallp/_bg.jpg
+# background
+exec_always --no-startup-id feh --bg-fill ~/images/wallp/_bg.jpg
 
 # Lock screen
-set $lock_command i3lock -t -i ~/Pictures/wallp/_bg_lock.png
+set $lock_command i3lock -t -i ~/images/wallp/_bg_lock.png
 bindsym $alt+Ctrl+l exec $lock_command
 exec xautolock -time 10 -locker '$lock_command' &
 
@@ -238,26 +238,28 @@ client.urgent           #2f343a   #900000   #ffffff   #900000   #900000
 client.placeholder      #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
 client.background       #ffffff00
 
+# DELL XPS 15
+# touchpad
+exec_always --no-startup-id xinput set-prop "DLL07BE:01 06CB:7A13 Touchpad" "libinput Disable While Typing Enabled" 0
+# reset laptop's display resolution
+exec_always --no-startup-id killall compton
+exec_always --no-startup-id xrandr --output eDP-1 --auto --scale 1x1
+exec_always --no-startup-id xrandr --output eDP-1-1 --auto --scale 1x1
+for_window [window_role="GtkFileChooserDialog"] resize set 1600 900
+# cpu freq throttling to limit temperature
+exec_always --no-startup-id pgrep "temp-throttle" || sudo temp-throttle 70 &
+
 # Layout switching shortcut
 exec_always setxkbmap -layout us,ua
 exec_always setxkbmap -option 'grp:alt_shift_toggle'
 
-# run compton
+# compton (transparency, vsync)
 exec_always --no-startup-id killall compton; compton -b --config ~/.config/compton.conf
 
 # display temp
-exec_always --no-startup-id redshift -O 4600 &
-
-# touchpad
-# DELL XPS 15
-#exec_always --no-startup-id xinput set-prop "DLL07BE:01 06CB:7A13 Touchpad" "libinput Disable While Typing Enabled" 0
-
-# other apps
-exec --no-startup-id telegram-desktop -startintray &
-exec --no-startup-id workrave &
-
-# time tracking
-exec_always --no-startup-id killall rescuetime; rescuetime &
+exec_always --no-startup-id redshift -P -O 3000 &
+#bindsym $mod+Shift+b exec --no-startup-id redshift -P -O 3600 -b 0.5 &
+bindsym $mod+Shift+b exec --no-startup-id redshift -P -O 4600 &
 
 # disable display timeout
 exec_always --no-startup-id xset s off
@@ -268,3 +270,15 @@ exec_always --no-startup-id xset -dpms
 #exec_always --no-startup-id xrandr --addmode VGA1 1920x1080_60.00
 #exec_always --no-startup-id xrandr --output VIRTUAL1 --off --output DP1 --off
 #exec_always --no-startup-id xrandr --output HDMI1 --primary --left-of VGA1 --mode 1920x1080_60.00
+
+# save windows info to a file
+bindsym $mod+Shift+w exec --no-startup-id windows-info > ~/windows-info.txt
+
+# nvidia on/off
+bindsym $mod+Shift+n exec --no-startup-id sudo nvidia-toggle 
+
+# other apps
+exec --no-startup-id telegram-desktop -startintray &
+exec --no-startup-id workrave &
+exec --no-startup-id rescuetime &
+
