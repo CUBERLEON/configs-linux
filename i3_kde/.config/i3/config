@@ -216,6 +216,9 @@ for_window [class="Kmix"] floating enable, border none
 for_window [class="Klipper"] floating enable, border none
 for_window [class="Plasmoidviewer"] floating enable, border none
 
+# Notifications location
+for_window [class="plasmashell" window_type="notification"] move position 50 50
+
 ## Colors
 # class                 border    backgr.   text      indicator child_border
 client.focused          #4c7899   #285577   #ffffff   #2e9ef4   #285577
