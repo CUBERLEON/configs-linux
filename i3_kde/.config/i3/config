@@ -47,8 +47,9 @@ bindsym $mod+Return exec --no-startup-id konsole
 bindsym $mod+Shift+Return exec --no-startup-id dolphin 
 
 # take screenshot
-bindsym Print exec --no-startup-id scrot ~/images/screenshots/%Y-%m-%d-%T.png -e 'xclip -selection c -t image/png < $f'
-bindsym --release Shift+Print exec --no-startup-id scrot -d 1 -s ~/images/screenshots/%Y-%m-%d-%T.png -e 'xclip -selection c -t image/png < $f'
+bindsym Print exec --no-startup-id maim --format=jpg | tee ~/images/screenshots/$(date +%Y-%m-%d_%H-%M-%S).jpg | xclip -selection clipboard -t image/jpg
+bindsym --release Shift+Print exec maim -s --format=jpg | tee ~/images/screenshots/$(date +%Y-%m-%d_%H-%M-%S).jpg | xclip -selection clipboard -t image/jpg
+bindsym --release Ctrl+Print exec maim -i $(xdotool getactivewindow) --format=jpg | tee ~/images/screenshots/$(date +%Y-%m-%d_%H-%M-%S).jpg | xclip -selection clipboard -t image/jpg
 
 # kill focused window
 bindsym $mod+Shift+q kill
