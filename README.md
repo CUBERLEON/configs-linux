@@ -1,1 +1,1 @@
-# Configs for Linux
+# dotfiles-arch
