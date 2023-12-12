@@ -1,12 +1,46 @@
-# hyprland
+# Hyprland
 
-## Setup
+## Automated setup
 
-### Hyprdots
+TODO
+
+## Manual setup
+
+### Install hyprdots from `prasanthrangan`
 
 https://github.com/prasanthrangan/hyprdots#Installation
 
+### Only for NVIDIA GPUs
+
+#### Fix black apps and background image after resume
+
+See https://github.com/prasanthrangan/hyprdots/issues/640#issuecomment-1850643973 for more context.
+
+Create the file at `/etc/modprobe.d/nvidia-power-management.conf` with the following content:
+
+```conf
+options nvidia NVreg_PreserveVideoMemoryAllocations=1
+```
+
+Enable services:
+
+```bash
+sudo systemctl enable nvidia-sleep.service
+sudo systemctl enable nvidia-hibernate.service
+```
+
 ## Apps
+
+### Visual Studio Code
+
+Fix crashes on Wayland by adding this config line to the settings file at `~/.config/Code/User/settings.json`:
+
+```json
+{
+"window.titleBarStyle": "custom",
+ ...
+}
+```
 
 ### Taiscale
 
@@ -14,17 +48,4 @@ https://github.com/prasanthrangan/hyprdots#Installation
 sudo pacman -S tailscale
 sudo systemctl enable --now tailscaled
 sudo tailscale login
-```
-
-## Playbooks
-
-### Visual Studio Code crashes on Wayland
-
-Add to your settings file at `~/.config/Code/User/settings.json`:
-
-```json
-{
-"window.titleBarStyle": "custom",
- ... 
-}
 ```
