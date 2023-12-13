@@ -22,7 +22,7 @@ Fix crashes on Wayland by adding this config line to the settings file at `~/.co
 ```json
 {
 "window.titleBarStyle": "custom",
- ...
+ // ...
 }
 ```
 
