@@ -1,10 +1,32 @@
 # Hyprland
 
-## Automated setup
+## Setup
 
-TODO
+```bash
+./hyprland.sh
+./apps.sh
+```
 
-## Manual setup
+## Configure apps
+
+### Login into Taiscale
+
+```bash
+sudo tailscale login
+```
+
+### Visual Studio Code
+
+Fix crashes on Wayland by adding this config line to the settings file at `~/.config/Code/User/settings.json`:
+
+```json
+{
+"window.titleBarStyle": "custom",
+ ...
+}
+```
+
+## Manual setup of Hyprland
 
 ### Install hyprdots from `prasanthrangan`
 
@@ -27,25 +49,4 @@ Enable services:
 ```bash
 sudo systemctl enable nvidia-sleep.service
 sudo systemctl enable nvidia-hibernate.service
-```
-
-## Apps
-
-### Visual Studio Code
-
-Fix crashes on Wayland by adding this config line to the settings file at `~/.config/Code/User/settings.json`:
-
-```json
-{
-"window.titleBarStyle": "custom",
- ...
-}
-```
-
-### Taiscale
-
-```bash
-sudo pacman -S tailscale
-sudo systemctl enable --now tailscaled
-sudo tailscale login
 ```
